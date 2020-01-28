@@ -42,7 +42,7 @@ has its own fork at [travleev/numjuggler](https://github.com/travleev/numjuggler
 The preffered way is using [pip](https://pip.pypa.io/en/stable/): 
 
 ```bash
-    >pip install numjuggler [--user]
+>pip install numjuggler [--user]
 ```
 When the optional ``--user`` argument is given, the files are written to the
 user installation directory (useful on machines without admin access). 
@@ -51,13 +51,10 @@ user installation directory (useful on machines without admin access).
 Alternatively, one can clone from github and install in so-called development mode:
 
 ```bash
-    >git clone git@github.com:travleev/numjuggler.git
-    >cd numjuggler
-    >pip install -e .
+>git clone git@github.com:travleev/numjuggler.git
+>cd numjuggler
+>pip install -e .
 ```
-
-TODO: the best way -- clone from travleev/numjuggler and install in the
-"development mode" using pip: `pip install -e .`. 
 
 TODO: try under windows/anaconda(?)
 
@@ -66,9 +63,11 @@ TODO: try under windows/anaconda(?)
 numjuggler is a command line tool written in Python. When properly installed,
 it can be invoked in one of the following ways:
 
-    >numjuggler           --mode <modename> [arguments] input.txt > input.new
-    >python -m numjuggler --mode <modename> [arguments] input.txt > input.new
-    
+```bash
+>numjuggler           --mode <modename> [arguments] input.txt > input.new
+>python -m numjuggler --mode <modename> [arguments] input.txt > input.new
+```
+
 These two invocation forms are equal. The command line arguments in general
 contain the only necessary argument -- the original MCNP input file (in the
 above example `input.txt`). The output is written to standard output that can
@@ -156,12 +155,13 @@ cells and surfaces in C-lite takes 5 -- 10 min.
     - [x] Add icons passed/failed to documentation and the repo's README
     - [ ] Optional: formulate rules how to add new examples/test input files. 
 
-- [ ] How to ensure that the version is updated each time a modification is introduced?
-
-    - [ ] Check the use of ``git tag`` and ``git describe``
-
 - [ ] Clear interface to the interactive help (the ``--help`` command line argument with options) that takes information from docs folder, i.e. originates from the same source as the online web documentation.
   
 - [ ] Add missing description of the execution modes.  
   
-- [ ] Connect to PyPi
+- [x] Connect to PyPi
+ 
+- [x] How to ensure that the version is updated each time a modification is introduced?
+
+    - [x] Check the use of ``git tag`` and ``git describe``
+

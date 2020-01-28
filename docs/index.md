@@ -39,6 +39,23 @@ has its own fork at [travleev/numjuggler](https://github.com/travleev/numjuggler
 
 
 ## Installation 
+The preffered way is using [pip](https://pip.pypa.io/en/stable/): 
+
+```bash
+    >pip install numjuggler [--user]
+```
+When the optional ``--user`` argument is given, the files are written to the
+user installation directory (useful on machines without admin access). 
+
+
+Alternatively, one can clone from github and install in so-called development mode:
+
+```bash
+    >git clone git@github.com:travleev/numjuggler.git
+    >cd numjuggler
+    >pip install -e .
+```
+
 TODO: the best way -- clone from travleev/numjuggler and install in the
 "development mode" using pip: `pip install -e .`. 
 

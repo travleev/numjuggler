@@ -6,6 +6,7 @@ nav:
         - renum: renum.md
         - info: info.md
         - cdens: cdens.md
+        - nogq2: nogq2.md
 
     - Map file: map.md
 

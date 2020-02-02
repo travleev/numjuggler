@@ -5,6 +5,10 @@
 Github repo: [travleev/numjuggler](https://github.com/travleev/numjuggler)
 [![Build Status](https://travis-ci.org/travleev/numjuggler.svg?branch=master)](https://travis-ci.org/travleev/numjuggler)
 
+On PyPI: [![PyPI version](https://badge.fury.io/py/numjuggler.svg)](https://badge.fury.io/py/numjuggler)
+
+This documentation:  [![Documentation Status](https://readthedocs.org/projects/badge-demo/badge/?version=latest)](https://badge-demo.readthedocs.io/en/latest/?badge=latest)
+
 The source for this documentation is located in the
 [docs](https://github.com/travleev/numjuggler/tree/docs) branch. The
 documentation is continually edited and updated: to get informed about updates

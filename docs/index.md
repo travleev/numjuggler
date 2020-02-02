@@ -112,7 +112,7 @@ found in the source code, see
 * msimp
 * nofill
 * nogq -- obsolete (see nogq2)
-* nogq2 -- replace ``GQ`` surfaces with transformed cylinders, where applicable
+* [nogq2](nogq2.md) -- replace ``GQ`` surfaces with transformed cylinders, where applicable
 * remc
 * remh -- replace cell complement operators ``#`` with actual geometry description
 * remrp

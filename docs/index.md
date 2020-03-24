@@ -9,6 +9,8 @@ On PyPI: [![PyPI version](https://badge.fury.io/py/numjuggler.svg)](https://badg
 
 This documentation:  [![Documentation Status](https://readthedocs.org/projects/badge-demo/badge/?version=latest)](https://badge-demo.readthedocs.io/en/latest/?badge=latest)
 
+## Organisational
+
 The source for this documentation is located in the
 [docs](https://github.com/travleev/numjuggler/tree/docs) branch. The
 documentation is continually edited and updated: to get informed about updates
@@ -22,10 +24,10 @@ github account.
 
 ## About 
 
-Numjuggler is a command line tool to perform specific tasks on the MCNP input
-files. 
+Numjuggler is a Python-based command line tool to perform specific tasks on the
+MCNP input files. 
 
-Originally, it was developed at [INR-KIT](https://www.inr.kit.edu) to rename
+Originally, numjuggler was developed at [INR-KIT](https://www.inr.kit.edu) to rename
 cells, surfaces and materials in the MCNP input file. This task appeared
 often within the framework of ITER nuclear analyses, where different parts of
 the MCNP computational model were developed independently by different
@@ -40,6 +42,14 @@ the execution modes, each performing particular task.
 The original development was previously conducted in the [inr-kit
 repository](https://github.com/inr-kit/numjuggler). The author of numjuggler
 has its own fork at [travleev/numjuggler](https://github.com/travleev/numjuggler). 
+
+## Requirements
+
+Numjuggler is tested against Python versions 2.7 and 3.7 under a modern Linux.
+Windows environment was not tested.
+
+The numjuggler package depends on ``six`` and ``pathlib2`` packages that are
+installed automatically when using ``pip``, see below.
 
 
 ## Installation 

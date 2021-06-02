@@ -1237,7 +1237,7 @@ def get_cards_from_input(inp, debug=None, preservetabs=False):
             while '\t' in l:
                 i = l.index('\t')
                 ii = (i // ts + 1) * ts - i
-                print("c Line {}: tab replaced with {} spaces".format(cln + 1, ii))
+                # print("c Line {}: tab replaced with {} spaces".format(cln + 1, ii))
                 l = l[:i] + ' '*ii + l[i+1:]
             return l[:]
 

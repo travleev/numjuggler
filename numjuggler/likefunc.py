@@ -319,7 +319,7 @@ def get_indices(scards, log=False):
     The LikeFuncitons describe mapping for cell, surface, material and universe
     numbers to their indices -- as they appear in the MCNP input file.
     """
-    from numbering import get_numbers
+    from numjuggler.numbering import get_numbers
     # get list of numbers as they appear in input
     d = get_numbers(scards)
 

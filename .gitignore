@@ -1,6 +1,7 @@
 # Python setup folders
 build/
 *.egg-info
+.eggs/
 numjuggler/version.py
 
 # Byte-compiled

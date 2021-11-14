@@ -945,7 +945,7 @@ def _split_cell(input_, self):
             # warn if there is possibility for an array following the fill
             # keyword:
             # TODO fill value can be an array
-            if 'fill' is s.lower() and 'lat' in ''.join(parm).lower():
+            if 'fill' == s.lower() and 'lat' in ''.join(parm).lower():
                 print('WARNING: fill keyword followed by an array', end=' ')
                 print('cannot be parsed')
 
@@ -1176,7 +1176,7 @@ if six.PY2:
         if it < dt and debug is None:
             # print('Reading from dump')
             # dump is youger
-            dfile = open(dname, 'r')
+            dfile = open(dname, 'r', encoding="cp1251")
             cl = cPickle.load(dfile)
             for c in cl:
                 yield c
@@ -1189,7 +1189,7 @@ if six.PY2:
         if debug is None:
             # otherwise the instances of c contain the file object, which
             # cannot be dumped.
-            dfile = open(dname, 'w')
+            dfile = open(dname, 'w', encoding="cp1251")
             cPickle.dump(cl, dfile)
 else:
     def get_cards(inp, debug=None, preservetabs=False):
@@ -1242,7 +1242,7 @@ def get_cards_from_input(inp, debug=None, preservetabs=False):
             return l[:]
 
     cln = 0  # current line number. Used only for debug
-    with open(inp, 'r') as f:
+    with open(inp, 'r', encoding="cp1251") as f:
         # define the first block:
         # -----------------------
 

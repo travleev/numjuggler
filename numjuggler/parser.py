@@ -1176,7 +1176,7 @@ if six.PY2:
         if it < dt and debug is None:
             # print('Reading from dump')
             # dump is youger
-            dfile = open(dname, 'r', encoding="cp1251")
+            dfile = open(dname, 'r')
             cl = cPickle.load(dfile)
             for c in cl:
                 yield c
@@ -1189,17 +1189,17 @@ if six.PY2:
         if debug is None:
             # otherwise the instances of c contain the file object, which
             # cannot be dumped.
-            dfile = open(dname, 'w', encoding="cp1251")
+            dfile = open(dname, 'w')
             cPickle.dump(cl, dfile)
 else:
-    def get_cards(inp, debug=None, preservetabs=False):
+    def get_cards(inp, debug=None, preservetabs=False, encoding='utf-8'):
         """
         Check first existence of a dump file
 
         If dump exists and it is newwer than the input file, read the dump file
         """
         iname = inp
-        for c in get_cards_from_input(inp, debug=debug, preservetabs=preservetabs):
+        for c in get_cards_from_input(inp, debug=debug, preservetabs=preservetabs, encoding=encoding):
             yield c
 
 
@@ -1215,7 +1215,7 @@ def index_(line, chars='$&'):
         i = len(line) - 1
     return i
 
-def get_cards_from_input(inp, debug=None, preservetabs=False):
+def get_cards_from_input(inp, debug=None, preservetabs=False, encoding='utf-8'):
     """
     Iterable, return instances of the Card() class representing
     cards in the input file.
@@ -1242,7 +1242,16 @@ def get_cards_from_input(inp, debug=None, preservetabs=False):
             return l[:]
 
     cln = 0  # current line number. Used only for debug
-    with open(inp, 'r', encoding="cp1251") as f:
+
+    def _open(fname, mode, encoding):
+        if six.PY2:
+            # open() in Python2 ( at least in 2.7) does not accept optional argument `encoding`. 
+            # Simply ignore it.
+            return open(fname, mode)
+        else:
+            return open(fname, mode, encoding=encoding)
+
+    with _open(inp, 'r', encoding=encoding) as f:
         # define the first block:
         # -----------------------
 

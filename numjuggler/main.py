@@ -127,6 +127,9 @@ def main(args=sys.argv[1:]):
     p.add_argument('--log', help='Log file.',
                    type=str,
                    default='')
+    p.add_argument('--encoding', help='Set input file encoding, e.g. "cp1251" for input files generaged with SuperMC on WIndows',
+                   type=str,
+                   default='utf-8')
 
     # parse help option in another parser:
     ph = ap.ArgumentParser(add_help=False)
@@ -176,7 +179,8 @@ def main(args=sys.argv[1:]):
         # process input file only once:
         cards = list(mp.get_cards(args.inp,
                                   debuglog,
-                                  preservetabs=args.preservetabs))
+                                  preservetabs=args.preservetabs,
+                                  encoding=args.encoding))
 
         if args.mode == 'info':
             indent = ' '*8

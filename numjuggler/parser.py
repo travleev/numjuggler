@@ -1154,11 +1154,15 @@ def is_blankline(l):
     return l.strip() == ''
 
 if six.PY2:
-    def get_cards(inp, debug=None, preservetabs=False):
+    def get_cards(inp, debug=None, preservetabs=False, encoding='utf-8'):
         """
         Check first existence of a dump file
 
         If dump exists and it is newwer than the input file, read the dump file
+
+        UPD: Here the `encoding` optional argument is dummy, i.e. not passed anywhere else.
+        It is introduced to have the same set of arguments in Python2 and Python3. In Python3
+        version of this function, the `encoding` argument is passed to open().
         """
         from os import stat
         iname = inp

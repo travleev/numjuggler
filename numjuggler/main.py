@@ -127,7 +127,7 @@ def main(args=sys.argv[1:]):
     p.add_argument('--log', help='Log file.',
                    type=str,
                    default='')
-    p.add_argument('--encoding', help='Set input file encoding, e.g. "cp1251" for input files generaged with SuperMC on WIndows',
+    p.add_argument('--encoding', help='Input file encoding, e.g. "cp1251" for input files generaged with SuperMC on Windows',
                    type=str,
                    default='utf-8')
 

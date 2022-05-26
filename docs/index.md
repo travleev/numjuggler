@@ -120,7 +120,7 @@ found in the source code, see
 * matan
 * matinfo
 * mdupl
-* merge
+* [merge](merge.md) -- merge two input files
 * minfo
 * mnew
 * msimp

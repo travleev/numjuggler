@@ -1,0 +1,12 @@
+The model to be merged into inp1.inp
+c cells
+10 1 -10.0 -10 imp:n=1
+11 0        10 imp:n=0
+
+c surfaces
+10 so 15
+
+c data
+m10 1001 1.
+
+

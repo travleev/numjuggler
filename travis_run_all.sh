@@ -30,3 +30,7 @@ for m in $(ls map?); do
     echo $m
     numjuggler $o --map $m inp.i > inp.$m && diff -w inp.$m.ref inp.$m > $m.diff || exit 1
 done
+
+cd $odir/travis_tests/merge
+numjuggler --mode merge -m inp2.inp inp1.inp > merged.inp && diff -w merged.inp.ref merged.inp > merged.diff || exit 1
+

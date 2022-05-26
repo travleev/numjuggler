@@ -1,0 +1,11 @@
+The main input
+c cells
+1 0 -1 imp:n=1
+2 0  1 imp:n=0
+
+c surfaces
+1 so 10
+
+c data cards:
+f4:n 1 
+

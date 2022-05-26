@@ -1,0 +1,23 @@
+The main input
+c cells
+1 0 -1 imp:n=1
+2 0  1 imp:n=0
+c start cell cards "The model to be merged into inp1.inp"
+c cells
+10 1 -10.0 -10 imp:n=1
+11 0        10 imp:n=0
+c end cell cards "The model to be merged into inp1.inp"
+
+c surfaces
+1 so 10
+c start surface cards "The model to be merged into inp1.inp"
+c surfaces
+10 so 15
+c end surface cards "The model to be merged into inp1.inp"
+
+c data cards:
+f4:n 1 
+c start data cards "The model to be merged into inp1.inp"
+c data
+m10 1001 1.
+c end data cards "The model to be merged into inp1.inp"

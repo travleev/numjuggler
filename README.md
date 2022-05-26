@@ -4,7 +4,7 @@ Tool to rename cells, surfaces, materials and universes in MCNP input files. See
 
 ## Current status
 
-[![Build Status](https://travis-ci.org/travleev/numjuggler.svg?branch=master)](https://travis-ci.org/travleev/numjuggler) -- shows status of the tests defined in [travis_tests](travis_tests) folder. 
+[![Build Status](https://travis-ci.com/travleev/numjuggler.svg?branch=master)](https://travis-ci.com/travleev/numjuggler) -- shows status of the tests defined in [travis_tests](travis_tests) folder. 
 
 [![PyPI version](https://badge.fury.io/py/numjuggler.svg)](https://badge.fury.io/py/numjuggler) -- available from PyPI. 
 

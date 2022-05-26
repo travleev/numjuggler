@@ -271,8 +271,6 @@ def _parse_map_line(l):
 
     rs, os = l[1:].split(':')
 
-    # Allow commas and no spaces in ranges
-    rs = rs.replace('--', ' -- ').replace(',', ' ')
     # Use only 1-st entry in the map rule
     os = os.split()[0].lstrip()
 
@@ -291,6 +289,10 @@ def _parse_map_line(l):
 
 
 def _get_map_ranges(s):
+    # don't require from user spaces before and after `--`
+    # and allow user commas
+    s = s.replace('--', ' -- ')
+    s = s.replace(',', ' ')
     tl = (s + ' 0').split()
 
     v1 = None
@@ -317,7 +319,7 @@ def get_indices(scards, log=False):
     The LikeFuncitons describe mapping for cell, surface, material and universe
     numbers to their indices -- as they appear in the MCNP input file.
     """
-    from numbering import get_numbers
+    from numjuggler.numbering import get_numbers
     # get list of numbers as they appear in input
     d = get_numbers(scards)
 

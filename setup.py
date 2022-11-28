@@ -46,6 +46,7 @@ setup(
     install_requires=[
         'six',
         'pathlib2',
+        'chardet',
     ],
     cmdclass={'test': PyTest},
     entry_points={'console_scripts': ['numjuggler = numjuggler.main:main']},

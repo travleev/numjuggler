@@ -10,6 +10,8 @@ import re
 import warnings
 import six
 import os
+from chardet import UniversalDetector
+from io import StringIO
 from numjuggler import PartialFormatter
 
 try:
@@ -1215,6 +1217,31 @@ def index_(line, chars='$&'):
         i = len(line) - 1
     return i
 
+
+def load_decode_buffer(filename):
+    """
+    Load and decode the text inside an file to a string buffer.
+
+    filename: path and name of input file
+    """
+    # detect encoding input deck
+    detector = UniversalDetector()
+    with open(filename, 'rb') as finp:
+        for row in finp:
+            detector.feed(row)
+            if detector.done:
+                break
+    detector.close()
+    inpencoding = detector.result['encoding']
+
+    # bufferize input deck in memory while decoding
+    # replace unknown characters found with hexadecimal Unicode backslashed escape sequences
+    with open(filename, mode='rb') as finp:
+        textbuffer = StringIO(finp.read().decode(inpencoding, errors='backslashreplace'))
+
+    return textbuffer
+
+
 def get_cards_from_input(inp, debug=None, preservetabs=False):
     """
     Iterable, return instances of the Card() class representing
@@ -1241,21 +1268,8 @@ def get_cards_from_input(inp, debug=None, preservetabs=False):
                 l = l[:i] + ' '*ii + l[i+1:]
             return l[:]
 
-    # detect encoding input deck
-    from chardet import UniversalDetector
-    detector = UniversalDetector()
-    with open(inp, 'rb') as finp:
-        for row in finp:
-            detector.feed(row)
-            if detector.done:
-                break
-    detector.close()
-    inpencoding = detector.result['encoding']
-
-    # bufferize input deck in memory while decoding
-    from io import StringIO
-    with open(inp, mode='r', encoding=inpencoding, errors='backslashreplace') as finp:
-        f = StringIO(finp.read())
+    # load input deck file inside a string buffer
+    f = load_decode_buffer(inp)
 
     cln = 0  # current line number. Used only for debug
     # define the first block:

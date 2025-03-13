@@ -8,7 +8,6 @@ import six
 from numjuggler.utils.io import cd_temporarily
 from numjuggler.main import main
 
-# test_data_path = path_resolver('tests')('data')
 test_data_path = Path('./data')
 assert test_data_path.exists(), "Cannot access test data files"
 

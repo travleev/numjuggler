@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 from __future__ import print_function, division, nested_scopes
 
+from pathlib import Path
+
 import pytest
 import six
-from numjuggler.utils.resource import path_resolver
 from numjuggler.utils.io import cd_temporarily
 from numjuggler.main import main
 
-test_data_path = path_resolver('tests')('data')
+test_data_path = Path('./data')
 assert test_data_path.exists(), "Cannot access test data files"
 
 
@@ -46,5 +47,3 @@ def test_test_main(tmpdir, capsys, inp, command, expected):
     actual_numbers = load_line_heading_numbers(out.split('\n'))
     expected_numbers = list(f for f in map(int, expected.split()))
     assert expected_numbers == actual_numbers, "Output of numjuggler is wrong"
-
-

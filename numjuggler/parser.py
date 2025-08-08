@@ -876,6 +876,14 @@ def _split_cell(input_, self):
             inpt_parm = inpt_parm.replace(vs, tp, 1)
             vals.append((vv, vt))
             fmts.append(vf)
+        elif s.lower() == 'vol':
+            vs = t.pop(0)
+            vv = vs  # we do not want to touch this, leave it as a string
+            vf = fmt_d(vs)
+            vt = 'vol'
+            inpt_parm = inpt_parm.replace(vs, tp, 1)
+            vals.append((vv, vt))
+            fmts.append(vf)
         elif 'fill' in s.lower():
             # print '_split_cell: has fill!'
             # assume that only one integer follows the fill keyword, optionally

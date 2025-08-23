@@ -947,7 +947,7 @@ def _split_cell(input_, self):
             # warn if there is possibility for an array following the fill
             # keyword:
             # TODO fill value can be an array
-            if 'fill' is s.lower() and 'lat' in ''.join(parm).lower():
+            if 'fill' == s.lower() and 'lat' in ''.join(parm).lower():
                 print('WARNING: fill keyword followed by an array', end=' ')
                 print('cannot be parsed')
 

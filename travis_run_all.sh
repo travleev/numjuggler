@@ -17,6 +17,10 @@ i=i2
 o="-c i -s i -m i"
 numjuggler $o $i.i > $i.res && diff -w $i.ref $i.res > $i.diff || exit 1
 
+i=i3
+o="-u -5942"
+numjuggler $o $i.i > $i.res && diff -w $i.ref $i.res > $i.diff || exit 1
+
 
 cd $odir/travis_tests/remh
 i=nested_complement

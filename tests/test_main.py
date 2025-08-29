@@ -40,7 +40,7 @@ def load_line_heading_numbers(lines):
 def test_test_main(tmpdir, capsys, inp, command, expected):
     source = test_data_path / inp
     command = command.split()
-    command.append(str(source))
+    command.append(str(source.absolute()))
     with cd_temporarily(tmpdir):
         main(command)
     out, err = capsys.readouterr()

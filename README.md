@@ -34,6 +34,14 @@ Alternatively, one can clone from github and install in so-called development mo
     >cd numjuggler
     >pip install -e .
 
+## Support the project
+
+- Please report here any bugs or unclear behaviour,
+- do not hesitate to propose new features to implement,
+- Curerrent documentation is outdated and the code needs refactoring. Consider [sponsoring](https://github.com/sponsors/travleev) the project to support this activity.
+- Travis CI is not more active for this repository. If you know alternatives or can help to organize CI for numjuggler -- let me know.
+
+
 <!---
 
 # numjuggler

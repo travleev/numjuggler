@@ -1,7 +1,7 @@
 Test default mode
 1 0  1 -10 imp:n=1 imp:p=5
 2 12 1  10 imp:n=1 imp:p=5
-3 0 -1     imp:n=0 imp:p=0
+3 0 -1     imp:n=0 imp:p=0  vol 1.23456789e-02
 
 1 px 1
 10 py 10

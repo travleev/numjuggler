@@ -32,10 +32,14 @@ re_ind = re.compile(r'\[.+\]', flags=re.DOTALL)
 # repitition syntax of MCNP input file
 re_rpt = re.compile(r'\d+[ri]', flags=re.IGNORECASE)
 
-# imp or tmp parameters in cell card
-re_prm = re.compile(r'((imp:n|imp:p|tmp)\s+\S+)')
-re_prm = re.compile(r'[it]mp:*[npe]*[=\s]+\S+', flags=re.IGNORECASE)
-re_prm = re.compile(r'([it]mp:*[npe]*[=\s]+)(\S+)', flags=re.IGNORECASE)
+# Regexp for parameters to be hidden, e.g. tmp, imp:, vol.
+re_prm = re.compile(r"""
+    ((?:
+    imp:[npe] |
+    tmp |
+    vol) \s* ={0,1} \s*)     # Value prefix, e.g. "imp:n=", "tmp ", "vol = "
+    (\S+)                    # Value itself
+    """, re.IGNORECASE + re.VERBOSE)
 
 # fill keyword
 re_fll = re.compile(r'\*{0,1}fill[=\s]+', flags=re.IGNORECASE)  # TODO: this will also match fill===
@@ -303,10 +307,8 @@ class Card(object):
                     inpt = inpt.replace('~', mat, 1)
                     d['~'].append(rho)
 
-            # imp and tmp parameters:
-            # print 're_prm: inp', repr(inpt)
+            # hide parameters that not to be changed:
             for s1, s2 in re_prm.findall(inpt):
-                # print 're_prm: fnd', repr(s)
                 d['~'].append(s2)
                 inpt = inpt.replace(s1 + s2, s1 + '~', 1)
 

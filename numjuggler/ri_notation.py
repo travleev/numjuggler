@@ -2,7 +2,7 @@
 Print out a list using "i" identifiers for inserting and repeating, as in MCNP.
 
 This is for a list of cells, where repititions and multiplication by a constant
-are not possible or saldom.
+are not possible or seldom.
 
 """
 
@@ -59,11 +59,13 @@ def expand(list_):
     they are expanded.
     """
     es = None
+    # this value not actually used. Set only to avoid checker warning about undefined n 
+    n = -1
     for e in list_:
         if es is not None:
             e = float(e)
-            d = (e - es) / (n+1)
-            for i in range(1, n+2):
+            d = (e - es) / (n + 1)
+            for i in range(1, n + 2):
                 yield es + d*i
             es = None
             ep = e

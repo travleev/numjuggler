@@ -4,40 +4,40 @@ from six import StringIO
 import numjuggler.likefunc as lf
 
 
-
-@pytest.mark.parametrize("data, log, present, absent, expected_present_value, expected_absent_value, expected_text", [
-    (
-        """
+@pytest.mark.parametrize(
+    "data, log, present, absent, expected_present_value, expected_absent_value, expected_text",
+    [
+        (
+            """
             c 1: 12
             c 2: 14
         """,
-        False,
-        1, 3,
-        12, 3,
-        "",
-    ),
-    (
-        """
+            False,
+            1,
+            3,
+            12,
+            3,
+            "",
+        ),
+        (
+            """
             c 1: 12
             c 2: 14
         """,
-        True,
-        1, 3,
-        12, 3,
-        "cel 12: 1\ncel 3: 3\n",
-    ),
-])
+            True,
+            1,
+            3,
+            12,
+            3,
+            "cel 12: 1\ncel 3: 3\n",
+        ),
+    ],
+)
 def test_LikeFunction(
-    data,
-    log,
-    present,
-    absent,
-    expected_present_value,
-    expected_absent_value,
-    expected_text
+    data, log, present, absent, expected_present_value, expected_absent_value, expected_text
 ):
-    input = StringIO(data)
-    maps = lf.read_map_file(input, log)
+    inp = StringIO(data)
+    maps = lf.read_map_file(inp, log)
     actual = StringIO()
     for k in maps:
         like_function = maps[k]

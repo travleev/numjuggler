@@ -1,0 +1,12 @@
+#!/bin/bash
+
+command -v just > /dev/null && echo "$(just --version) is already installed" && exit 0
+
+
+if [ ! command -v cargo ]; then
+  echo "'just' is a Rust application, install rustup in advance"
+  exit 1
+fi
+
+cargo install just
+just --version

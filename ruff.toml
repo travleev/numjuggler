@@ -1,0 +1,137 @@
+target-version = "py313"
+line-length = 100
+src = ["src", "tests"]
+exclude = [
+  ".cache",
+  ".direnv",
+  ".eggs",
+  ".git",
+  ".git-rewrite",
+  ".hg",
+  ".ipynb_checkpoints",
+  ".mypy_cache",
+  ".nox",
+  ".pytest_cache",
+  ".pytype",
+  ".ruff_cache",
+  ".svn",
+  ".tox",
+  ".venv",
+  ".vscode",
+  "__pycache__",
+  "__pypackages__",
+  "_build",
+  "adhoc",
+  "build",
+  "data",
+  "dist",
+  "docs/source/conf.py",
+  "node_modules",
+  "notebooks",
+  "site-packages",
+  "venv",
+  "wrk",
+]
+
+[lint]
+select = ["ALL"]
+ignore = [ # TODO @dvp2015: TD is rather high, fix
+  "ANN",
+  "ARG",
+  "B",
+  "BLE",
+  "C",
+  "C901",
+  "COM812",
+  "D",
+  "D203",
+  "D211",
+  "D213",
+  "E",
+  "EM",
+  "E741",
+  "ERA",
+  "EXE",
+  "F",
+  "FBT",
+  "FIX",
+  "FURB",
+  "I",
+  "ICN",
+  "Q",
+  "N",
+  "PERF",
+  "PLC",
+  "PLR",
+  "PLW",
+  "PT",
+  "PTH",
+  "RET",
+  "RUF",
+  "S",
+  "SIM",
+  "SLF",
+  "T201",
+  "TD",
+  "TRY",
+  "UP",
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["ANN", "D100", "D101", "D102", "D103", "D104", "PLR2004", "S101"]
+
+[lint.mccabe]
+# Unlike Flake8, default to a complexity level of 10.
+max-complexity = 15
+
+[lint.flake8-annotations]
+mypy-init-return = true # skip return type for __init__() methods
+
+[lint.flake8-pytest-style]
+parametrize-names-type = "csv"
+
+[lint.flake8-type-checking]
+strict = true
+
+[lint.pep8-naming]
+ignore-names = ["*eV*", "*He*"]
+
+# warning: The isort option `isort.split-on-trailing-comma` is incompatible
+# with the formatter `format.skip-magic-trailing-comma=true` option.
+# To avoid unexpected behavior, we recommend either setting `isort.split-on-trailing-comma=false`
+# or `format.skip-magic-trailing-comma=false`.
+
+[lint.isort]
+known-first-party = ["src"]
+known-third-party = [
+  "mpl_toolkits",
+  "matplotlib",
+  "numpy",
+  "scipy",
+  "loguru",
+  "tqdm",
+  "dotenv",
+]
+default-section = "third-party"
+lines-between-types = 1
+required-imports = ["from __future__ import annotations"]
+case-sensitive = true
+section-order = [
+  "future",
+  "typing",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+  "testing",
+]
+
+[lint.isort.sections]
+"typing" = ["typing", "typing_extension"]
+"testing" = ["tests"]
+
+[lint.pydocstyle]
+convention = "numpy"
+
+[format]
+docstring-code-format = true

@@ -1,7 +1,7 @@
 # Python setup folders
 build/
 *.egg-info
-numjuggler/version.py
+src/numjuggler/version.py
 
 # Byte-compiled
 *.pyc
@@ -14,6 +14,7 @@ numjuggler/version.py
 # Environments
 .cache/
 .idea/
+.vscode/
 
 # Dev.scripts results
 numjuggler.dot
@@ -26,9 +27,12 @@ numjuggler.sfood2
 .coverage
 htmlcov/
 
-# Travis tests
-travis_tests/*.diff
-travis_tests/*.res
+# pyreverse
+*_numjuggler.puml
+*_numjuggler.html
 
-# vs code
-settings.json
+# docs
+site 
+.docs-build
+
+

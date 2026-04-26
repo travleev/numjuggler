@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#
+# Install uv, fast Rust based Python project and environment manager
+# See https://github.com/astral-sh/uv
+#
+command -v uv && echo "$(uv --version) is already installed" && exit 0  
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# vim: set ts=4 sw=4 tw=92 ft=sh ss=0 et ai :

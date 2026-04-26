@@ -1,10 +1,99 @@
-# [tool.towncrier]
-#     directory = 'changes'
-
 [build-system]
-    requires = ['setuptools>=42', 'wheel', 'setuptools_scm[toml]>=3.4']
+requires = ['setuptools>=42', 'wheel', 'setuptools_scm[toml]>=3.4']
+
+[project]
+name = "numjuggler"
+dynamic = ["version"]
+description = "MCNP input file renumbering tool"
+readme = "README.md"
+keywords = ["MCNP", "ITER", "PARSER", "RENUMBER"]
+license = "GPL-3.0-or-later"
+authors = [{ name = "A.Travleev", email = "anton.travleev@gmail.com" }]
+requires-python = ">=3.11"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Eduation",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Topic :: Utilities",
+]
+dependencies = ["chardet>=7.4.3", "numpy>=2.4.4", "six>=1.17.0"]
+urls."Bug Tracker" = "https://github.com/travleev/numjuggler/issues"
+urls.Changelog = "https://github.com/travleev/numjuggler/releases"
+urls.documentation = "https://numjuggler.readthedocs.io/"
+urls.homepage = "https://github.com/travleev/numjuggler/"
+urls.repository = "https://github.com/travleev/numjuggler/"
+
 
 [tool.setuptools_scm]
-    write_to = 'numjuggler/version.py'
+write_to = "src/numjuggler/version.py"
 
+[project.scripts]
+numjuggler = "numjuggler.main:main"
 
+[dependency-groups]
+dev = [
+  { include-group = "docs" },
+  { include-group = "style" },
+  { include-group = "test" },
+]
+docs = [
+  "mkdocs",
+  "mkdocs-include-markdown-plugin",
+  "mkdocs-material",
+  "mkdocstrings[python]>=0.29",
+  "pygments",
+  "griffe-public-wildcard-imports",
+]
+style = [
+  { include-group = "pylint" },
+  #  { include-group = "mypy" },
+  #  { include-group = "pyright" },
+  "pre-commit>=4.5.1",
+  "ruff>=0.15.11",
+  "ty>=0.0.31",
+]
+pylint = ["pylint", "pylint-per-file-ignores"]
+test = [
+    "pygments>=2.20.0",
+    "pytest>=9.0.3",
+    "pytest-cov>=7.1.0",
+    "pytest-mock>=3.15.1",
+    "xdoctest>=1.3.2",
+]
+
+[tool.coverage]
+run.branch = true
+run.omit = ["__main__.py", "**/__init__.py", "*_tab.py", "tools/*.py"]
+run.parallel = true
+run.source = ["src"]
+paths.source = ["src"]
+# Regexes for lines to exclude from consideration
+report.exclude_lines = [
+  # Don't complain about missing debug-only code:
+  "def __repr__",
+  "if __name__ == .__main__.:",
+  # Don't complain if non-runnable code isn't run:
+  "if 0:",
+  "if self.debug",
+  "if TYPE_CHECKING:",
+  # Have to re-enable the standard pragma
+  "pragma: no cover",
+  # Don't complain if tests don't hit defensive assertion code:
+  "raise AssertionError",
+  "raise NotImplementedError",
+]
+report.fail_under = 30 # TODO @dvp: should be at least 80%
+report.ignore_errors = true
+report.omit = ["**/__init__.py", "**/types.py", "*_tab.py"]
+report.show_missing = true
+report.skip_covered = true
+report.sort = "Cover"
